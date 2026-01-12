@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+<style>
+body{font-family:Arial;background:#f2f2f2;padding:20px}
+div{background:#fff;padding:10px;margin:5px}
+button{background:red;color:#fff;border:0;padding:5px}
+</style>
+</head>
+
+<body>
+
+<h2>🔒 Painel Admin</h2>
+<div id="lista"></div>
+
+<script>
+let radios = JSON.parse(localStorage.getItem("radios")) || [];
+let lista = document.getElementById("lista");
+
+function carregar(){
+lista.innerHTML="";
+radios.forEach((r,i)=>{
+lista.innerHTML+=`
+<div>
+${r.nome} - ${r.segmento}
+<button onclick="excluir(${i})">Excluir</button>
+</div>`;
+});
+}
+function excluir(i){
+radios.splice(i,1);
+localStorage.setItem("radios",JSON.stringify(radios));
+carregar();
+}
+carregar();
+</script>
+
+</body>
+</html>
