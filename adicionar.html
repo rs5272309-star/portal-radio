@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Adicionar Rádio</title>
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f2f2f2;
+  padding:20px;
+}
+h2{
+  text-align:center;
+}
+input, select{
+  width:100%;
+  padding:10px;
+  margin:6px 0;
+  font-size:16px;
+}
+button{
+  width:100%;
+  padding:12px;
+  background:#d40000;
+  color:#fff;
+  border:none;
+  font-size:16px;
+  cursor:pointer;
+}
+button:hover{
+  opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<h2>➕ Adicionar Rádio</h2>
+
+<input type="text" id="nome" placeholder="Nome da Rádio" required>
+<input type="text" id="cidade" placeholder="Cidade" required>
+<input type="text" id="estado" placeholder="Estado" required>
+<input type="text" id="pais" placeholder="País" required>
+<input type="text" id="stream" placeholder="Link do Stream (http://...)" required>
+
+<select id="segmento">
+  <option>Adulto Contemporâneo</option>
+  <option>Alternativa</option>
+  <option>Ambient</option>
+  <option>Axé</option>
+  <option>Blues</option>
+  <option>Brega</option>
+  <option>Católica</option>
+  <option>Chillout</option>
+  <option>Clássica</option>
+  <option>Comunitária</option>
+  <option>Country</option>
+  <option>Cristã</option>
+  <option>Cultura</option>
+  <option>Dance</option>
+  <option>Disco</option>
+  <option>Educativa</option>
+  <option>Eletrônica</option>
+  <option>Entrevistas</option>
+  <option>Esporte</option>
+  <option>Flashback</option>
+  <option>Forró</option>
+  <option>Funk</option>
+  <option>Gospel</option>
+  <option>Hip Hop</option>
+  <option>Hits</option>
+  <option>House</option>
+  <option>Infantil</option>
+  <option>Instrumental</option>
+  <option>Jazz</option>
+  <option>Jovem</option>
+  <option>K-Pop</option>
+  <option>Latina</option>
+  <option>MPB</option>
+  <option>Metal</option>
+  <option>Mix</option>
+  <option>Música Brasileira</option>
+  <option>Notícias</option>
+  <option>Pagode</option>
+  <option>Pop</option>
+  <option>Popular</option>
+  <option>Rap</option>
+  <option>Reggae</option>
+  <option>Regional</option>
+  <option>Religiosa</option>
+  <option>Rock</option>
+  <option>Romântica</option>
+  <option>Rural</option>
+  <option>Samba</option>
+  <option>Sertanejo</option>
+  <option>Soul</option>
+  <option>Talk Show</option>
+  <option>Tecnologia</option>
+  <option>Trance</option>
+  <option>Web Rádio</option>
+</select>
+
+<button onclick="salvarRadio()">Salvar Rádio</button>
+
+<script>
+function salvarRadio(){
+  let radios = JSON.parse(localStorage.getItem("radios")) || [];
+
+  radios.push({
+    nome: document.getElementById("nome").value,
+    cidade: document.getElementById("cidade").value,
+    estado: document.getElementById("estado").value,
+    pais: document.getElementById("pais").value,
+    stream: document.getElementById("stream").value,
+    segmento: document.getElementById("segmento").value
+  });
+
+  localStorage.setItem("radios", JSON.stringify(radios));
+  alert("Rádio adicionada com sucesso!");
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
